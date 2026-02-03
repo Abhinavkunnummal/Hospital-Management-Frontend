@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PatientService {
+
+   private baseUrl = environment.apiBaseUrl
   
-  apiUrl='http://localhost:3000/appointment/add'
-  getApiUrl='http://localhost:3000/appointment'
-  editApiUrl='http://localhost:3000/appointment'
+  apiUrl=`${this.baseUrl}/appointment/add`
+  getApiUrl=`${this.baseUrl}/appointment`
+  editApiUrl=`${this.baseUrl}/appointment`
  
 
   constructor(private http:HttpClient){

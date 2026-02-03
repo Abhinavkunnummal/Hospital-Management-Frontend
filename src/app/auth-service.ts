@@ -1,15 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { Patient } from "./patient";
 import { Injectable } from "@angular/core";
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+   private baseUrl = environment.apiBaseUrl;
 
-  registerApi = 'http://localhost:3000/patient/add';
-  loginApi = 'http://localhost:3000/patient/login';
-  doctorRegisterApi = 'http://localhost:3000/doctor/add';
+  registerApi = `${this.baseUrl}/patient/add`;
+  loginApi = `${this.baseUrl}/patient/login`;
+  doctorRegisterApi = `${this.baseUrl}/doctor/add`;
 
   constructor(private http: HttpClient) {}
 
