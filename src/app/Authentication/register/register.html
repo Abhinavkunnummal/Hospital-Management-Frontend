@@ -1,0 +1,50 @@
+<form [formGroup]="registerForm" class="auth-card" (ngSubmit)="onSubmit()">
+
+  <h2>Create Account</h2>
+  <p class="subtitle">Join us today 🚀</p>
+
+  <!-- Name -->
+  <div class="input-group">
+    <input type="text" formControlName="name" required />
+    <label>Name</label>
+
+    <small *ngIf="registerForm.controls.name.touched && registerForm.controls.name.invalid">
+      Name must be at least 5 characters
+    </small>
+  </div>
+
+  <!-- Email -->
+  <div class="input-group">
+    <input type="email" formControlName="email" required />
+    <label>Email</label>
+
+    <small *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+      Valid email is required
+    </small>
+  </div>
+
+  <!-- Password -->
+  <div class="input-group">
+    <input type="password" formControlName="password" required />
+    <label>Password</label>
+
+    <small *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
+      Minimum 4 characters
+    </small>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="input-group">
+    <input type="password" formControlName="cPassword" required />
+    <label>Confirm Password</label>
+
+    <small *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.controls.cPassword.touched">
+      Passwords do not match
+    </small>
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">
+    Register
+  </button>
+<a href="" routerLink="/login">Login</a>
+</form>

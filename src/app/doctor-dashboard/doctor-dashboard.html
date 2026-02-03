@@ -1,0 +1,82 @@
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <h1>🩺 Doctor Dashboard</h1>
+    <p class="subtitle">Welcome back, Dr. {{ doctorName }}</p>
+  </div>
+
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>
+
+
+<div class="stats-container">
+  <div class="stat-card blue">
+    <h3>Total Appointments</h3>
+    <p>{{ appointments.length }}</p>
+  </div>
+
+  <div class="stat-card green">
+    <h3>Today</h3>
+    <p>{{ todayAppointments }}</p>
+  </div>
+
+  <div class="stat-card orange">
+    <h3>Pending</h3>
+    <p>{{ pendingAppointments }}</p>
+  </div>
+</div>
+
+
+<div class="table-section">
+  <h2>📅 Appointments</h2>
+
+  <table class="appointments-table">
+    <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+   <tbody>
+  <tr *ngFor="let app of appointments">
+    <td>{{ app.patientId.name }}</td>
+    <td>{{ app.appointmentDate | date }}</td>
+    <td>{{ app.reason }}</td>
+
+    <td>
+      <span class="status" [ngClass]="app.status">
+        {{ app.status || 'Pending' }}
+      </span>
+    </td>
+
+    <td>
+      <!-- Show buttons ONLY if status is Pending or empty -->
+      <ng-container *ngIf="!app.status || app.status === 'Pending'">
+        <button class="approve-btn"
+                (click)="updateStatus(app._id, 'Approved')">
+          Approve
+        </button>
+
+        <button class="reject-btn"
+                (click)="updateStatus(app._id, 'Rejected')">
+          Reject
+        </button>
+      </ng-container>
+
+      <!-- Show text when already processed -->
+      <span *ngIf="app.status === 'Approved'" class="approved-text">
+        ✔ Approved
+      </span>
+
+      <span *ngIf="app.status === 'Rejected'" class="rejected-text">
+        ✖ Rejected
+      </span>
+    </td>
+  </tr>
+</tbody>
+  </table>
+</div>

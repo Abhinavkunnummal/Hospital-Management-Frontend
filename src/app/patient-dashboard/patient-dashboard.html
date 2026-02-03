@@ -1,0 +1,87 @@
+<!-- Header -->
+<div class="header">
+  <h1 class="title">🏥 Patient Dashboard</h1>
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>
+
+<!-- Doctor Cards -->
+<div class="doctor-container">
+  <div class="doctor-card" *ngFor="let doctor of doctors">
+    <div class="avatar">
+      {{ doctor.doctorName[0] }}
+    </div>
+
+    <h2>{{ doctor.doctorName }}</h2>
+    <p class="specialization">{{ doctor.specialization }}</p>
+
+    <button class="book-btn" (click)="BookAppointment(doctor._id)">
+      Book Appointment
+    </button>
+  </div>
+</div>
+
+<!-- Booking Modal -->
+<div class="overlay" *ngIf="show">
+  <div class="modal">
+    <h2>📅 Book Appointment</h2>
+
+    <div class="form-group">
+      <label>Patient Name</label>
+      <input type="text" [(ngModel)]="appointmentDetails.userName">
+    </div>
+
+    <div class="form-group">
+      <label>Doctor Name</label>
+      <input type="text" [(ngModel)]="appointmentDetails.doctorName" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Appointment Date</label>
+      <input type="date" [(ngModel)]="appointmentDetails.appointmentDate">
+    </div>
+
+    <div class="form-group">
+      <label>Reason</label>
+      <textarea rows="3" [(ngModel)]="appointmentDetails.reason"></textarea>
+    </div>
+
+    <div class="actions">
+      <button class="cancel-btn" (click)="show=false">Cancel</button>
+      <button class="confirm-btn" (click)="submitData()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Appointment Table -->
+<div class="appointments-section">
+  <h2>🗂 My Appointments</h2>
+
+  <table class="appointments-table">
+    <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Reason</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let app of appoints">
+        <td>{{ app.patientId.name }}</td>
+        <td>{{ app.doctorId.doctorName }}</td>
+        <td>{{ app.appointmentDate | date }}</td>
+        <td>
+          <span class="status">{{ app.status || 'Pending' }}</span>
+        </td>
+        <td>{{ app.reason }}</td>
+        <td class="action-btns">
+          <!-- <button class="edit-btn" (click)="editAppointment(app._id)">Edit</button> -->
+          <button class="delete-btn" (click)="deleteAppointment(app._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

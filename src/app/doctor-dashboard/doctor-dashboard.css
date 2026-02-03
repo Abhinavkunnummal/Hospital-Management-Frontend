@@ -1,0 +1,158 @@
+/* Page */
+body {
+  background: linear-gradient(135deg, #f1f8ff, #e3f2fd);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  background: linear-gradient(135deg, #4facfe, #00c6ff);
+  color: white;
+  border-radius: 0 0 20px 20px;
+}
+
+.subtitle {
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.logout-btn {
+  background: #ff5252;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Stats */
+.stats-container {
+  display: flex;
+  gap: 20px;
+  padding: 25px;
+  justify-content: center;
+}
+
+.stat-card {
+  width: 220px;
+  padding: 20px;
+  border-radius: 16px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.stat-card h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.blue {
+  background: linear-gradient(135deg, #42a5f5, #478ed1);
+}
+
+.green {
+  background: linear-gradient(135deg, #66bb6a, #43a047);
+}
+
+.orange {
+  background: linear-gradient(135deg, #ffa726, #fb8c00);
+}
+
+/* Table */
+.table-section {
+  margin: 30px auto;
+  width: 90%;
+}
+
+.table-section h2 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.appointments-table {
+  width: 100%;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-collapse: collapse;
+}
+
+.appointments-table th {
+  background: #4facfe;
+  color: white;
+  padding: 14px;
+}
+
+.appointments-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.appointments-table tr:hover {
+  background: #f1f9ff;
+}
+
+/* Status */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.Pending {
+  background: #ffe082;
+}
+
+.Approved {
+  background: #81c784;
+  color: white;
+}
+
+.Rejected {
+  background: #e57373;
+  color: white;
+}
+
+/* Action buttons */
+.approve-btn {
+  background: #4caf50;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 6px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background: #e53935;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.approved-text {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.rejected-text {
+  color: #e74c3c;
+  font-weight: bold;
+}

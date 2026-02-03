@@ -1,0 +1,45 @@
+<form [formGroup]="doctorForm" class="doctor-card" (ngSubmit)="onSubmit()">
+
+  <h2>👨‍⚕️ Doctor Registration</h2>
+  <p class="subtitle">Join our medical team</p>
+
+  <div class="input-group">
+    <input type="text" formControlName="doctorName" required />
+    <label>Doctor Name</label>
+  </div>
+
+  <small *ngIf="doctorForm.controls.doctorName.touched && doctorForm.controls.doctorName.invalid">
+    Minimum 5 characters
+  </small>
+
+  <div class="input-group">
+    <input type="email" formControlName="email" required />
+    <label>Email</label>
+  </div>
+
+  <div class="input-group">
+    <input type="text" formControlName="specialization" required />
+    <label>Specialization</label>
+  </div>
+
+  <div class="input-group">
+    <input type="password" formControlName="password" required />
+    <label>Password</label>
+  </div>
+
+  <div class="input-group">
+    <input type="password" formControlName="cPassword" required />
+    <label>Confirm Password</label>
+  </div>
+
+  <small *ngIf="doctorForm.errors?.['passwordMismatch']">
+    Passwords do not match
+  </small>
+
+  <button type="submit" [disabled]="doctorForm.invalid">
+    Register Doctor
+  </button>
+
+  <a routerLink="/login">Already have an account?</a>
+
+</form>
